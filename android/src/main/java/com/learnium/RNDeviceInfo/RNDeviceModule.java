@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.KeyguardManager;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -168,6 +169,17 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
         TelephonyManager telMgr = (TelephonyManager) this.reactContext.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
         constants.put("phoneNumber", telMgr.getLine1Number());
     }
+
+    // 当无法获取渠道时默认设置渠道为"安卓"
+    String 渠道 = "安卓";
+    try {
+      final ApplicationInfo 应用信息 = reactContext.getPackageManager().getApplicationInfo(reactContext.getPackageName(), PackageManager.GET_META_DATA);
+      渠道 = 应用信息.metaData.getString("BaiduMobAd_CHANNEL");
+    } catch (Exception e) {
+
+    }
+    constants.put("渠道", 渠道);
+
     return constants;
   }
 }

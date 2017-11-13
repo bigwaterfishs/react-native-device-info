@@ -85,5 +85,8 @@ module.exports = {
   },
   getPhoneNumber: function () {
     return RNDeviceInfo.phoneNumber;
+  },
+  获取渠道: function () {
+    return RNDeviceInfo.渠道;
   }
 };

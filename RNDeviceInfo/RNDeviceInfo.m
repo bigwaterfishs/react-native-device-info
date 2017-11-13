@@ -208,6 +208,11 @@ RCT_EXPORT_MODULE()
              @"timezone": self.timezone,
              @"isEmulator": @(self.isEmulator),
              @"isTablet": @(self.isTablet),
+#ifdef DEBUG
+             @"渠道": @"苹果开发",
+#else
+             @"渠道": @"苹果",
+#endif
              };
 }
 

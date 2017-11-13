@@ -28,4 +28,5 @@ declare module.exports: {
   getSerialNumber: () => string,
   getIPAddress: () => Promise<string>,
   getMACAddress: () => Promise<string>,
+  获取渠道: () => string,
 }
